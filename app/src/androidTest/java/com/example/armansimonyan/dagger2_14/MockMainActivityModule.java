@@ -19,8 +19,8 @@ public abstract class MockMainActivityModule {
 	@ContributesAndroidInjector(modules = MockMainFragmentModule.class)
 	abstract MainFragment mainFragment();
 
-	@Binds
 	@ActivityScope
+	@Binds
 	abstract MainActivityContract.View view(MainActivity mainActivity);
 
 	@ActivityScope

@@ -1,6 +1,5 @@
 package com.example.armansimonyan.dagger2_14.dagger;
 
-import com.example.armansimonyan.dagger2_14.dagger.FragmentScope;
 import com.example.armansimonyan.dagger2_14.main_fragment.MainFragment;
 import com.example.armansimonyan.dagger2_14.main_fragment.MainFragmentContract;
 import com.example.armansimonyan.dagger2_14.main_fragment.MainFragmentPresenter;
