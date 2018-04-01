@@ -1,21 +1,13 @@
 package com.example.armansimonyan.dagger2_14.main_activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import com.example.armansimonyan.dagger2_14.main_fragment.MainFragment
 import com.example.armansimonyan.dagger2_14.R
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainActivityContract.View, HasSupportFragmentInjector {
-
-	@Inject
-	lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
 	@Inject
 	lateinit var presenter: MainActivityContract.Listener
@@ -26,18 +18,10 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View, HasSupportF
 		setContentView(R.layout.activity_main)
 
 		findViewById<TextView>(R.id.text).text = presenter.getText()
-
-		supportFragmentManager.beginTransaction()
-				.add(R.id.container, MainFragment())
-				.commit()
 	}
 
 	override fun getType(): Int {
 		return 0
-	}
-
-	override fun supportFragmentInjector(): AndroidInjector<android.support.v4.app.Fragment> {
-		return fragmentInjector
 	}
 
 }
