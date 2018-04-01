@@ -15,14 +15,6 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class MockMainActivityModule {
 
-	@FragmentScope
-	@ContributesAndroidInjector(modules = MockMainFragmentModule.class)
-	abstract MainFragment mainFragment();
-
-	@Binds
-	@ActivityScope
-	abstract MainActivityContract.View view(MainActivity mainActivity);
-
 	@ActivityScope
 	@Provides
 	static MainActivityContract.Listener listener(
@@ -32,4 +24,13 @@ public abstract class MockMainActivityModule {
 		view.getType();
 		return MockProvider.getMainActivityContractListener();
 	}
+
+	@Binds
+	@ActivityScope
+	abstract MainActivityContract.View view(MainActivity mainActivity);
+
+	@FragmentScope
+	@ContributesAndroidInjector(modules = MockMainFragmentModule.class)
+	abstract MainFragment mainFragment();
+
 }
