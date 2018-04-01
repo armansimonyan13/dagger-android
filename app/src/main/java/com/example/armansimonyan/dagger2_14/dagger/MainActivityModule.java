@@ -3,12 +3,10 @@ package com.example.armansimonyan.dagger2_14.dagger;
 import com.example.armansimonyan.dagger2_14.main_activity.MainActivity;
 import com.example.armansimonyan.dagger2_14.main_activity.MainActivityContract;
 import com.example.armansimonyan.dagger2_14.main_activity.MainActivityPresenter;
-import com.example.armansimonyan.dagger2_14.main_fragment.MainFragment;
 
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
-import dagger.android.ContributesAndroidInjector;
 
 @Module
 abstract class MainActivityModule {
@@ -26,9 +24,5 @@ abstract class MainActivityModule {
 	@ActivityScope
 	@Binds
 	abstract MainActivityContract.View view(MainActivity mainActivity);
-
-	@FragmentScope
-	@ContributesAndroidInjector(modules = MainFragmentModule.class)
-	abstract MainFragment mainFragment();
 
 }
