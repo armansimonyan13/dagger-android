@@ -5,6 +5,7 @@ import com.example.armansimonyan.dagger2_14.main_activity.MainActivityContract;
 import com.example.armansimonyan.dagger2_14.main_activity.MainActivityPresenter;
 
 import dagger.Binds;
+import dagger.Lazy;
 import dagger.Module;
 import dagger.Provides;
 
@@ -14,15 +15,11 @@ abstract class MainActivityModule {
 	@ActivityScope
 	@Provides
 	static MainActivityContract.Listener listener(
-			MainActivityContract.View view,
-			MainActivityPresenter mainActivityPresenter
+			MainActivity view,
+			Lazy<MainActivityPresenter> mainActivityPresenter
 	) {
 		view.getType();
-		return mainActivityPresenter;
+		return mainActivityPresenter.get();
 	}
-
-	@ActivityScope
-	@Binds
-	abstract MainActivityContract.View view(MainActivity mainActivity);
 
 }
